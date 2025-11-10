@@ -1,5 +1,4 @@
 import { getDefaultDashboardRoute } from "@/lib/auth-utils";
-
 import { getNavItemsByRole } from "@/lib/navItems.config";
 import { getUserInfo } from "@/services/auth/getUserInfo";
 import { UserInfo } from "@/types/user.interface";

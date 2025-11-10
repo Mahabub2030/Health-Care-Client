@@ -12,16 +12,14 @@ export const getUserInfo = async (): Promise<UserInfo | null> => {
     if (!accessToken) {
       return null;
     }
-
     const verifiedToken = jwt.verify(
       accessToken,
-      process.env.JWT_SECRET as string
+      process.env.ACCESS_TOKEN_SECRET as string
     ) as JwtPayload;
 
     if (!verifiedToken) {
       return null;
     }
-
     const userInfo: UserInfo = {
       name: verifiedToken.name || "Unknown User",
       email: verifiedToken.email,

@@ -1,4 +1,3 @@
-("");
 import { NavSection } from "@/types/dashboard.interface";
 import { getDefaultDashboardRoute, UserRole } from "./auth-utils";
 
