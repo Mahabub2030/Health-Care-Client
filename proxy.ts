@@ -1,7 +1,3 @@
-import jwt, { JwtPayload } from "jsonwebtoken";
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
-
 import {
   getDefaultDashboardRoute,
   getRouteOwner,
@@ -9,6 +5,9 @@ import {
   UserRole,
 } from "@/lib/auth-utils";
 import { deleteCookie, getCookie } from "@/services/tokenHandlers";
+import jwt, { JwtPayload } from "jsonwebtoken";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
 // This function can be marked `async` if using `await` inside
 export async function proxy(request: NextRequest) {
