@@ -25,12 +25,12 @@ const AdminDoctorsManagementPage = async ({
   );
   return (
     <div className="space-y-6">
-      <DoctorsManagementHeader specialities={specialitiesResult.data} />
+      <DoctorsManagementHeader specialities={specialitiesResult?.data} />
       <div className="flex space-x-2">
         <SearchFilter paramName="searchTerm" placeholder="Search doctors..." />
         <SelectFilter
           paramName="speciality" // ?speciality="Cardiology"
-          options={specialitiesResult.data.map((speciality: ISpecialty) => ({
+          options={specialitiesResult?.data.map((speciality: ISpecialty) => ({
             label: speciality.title,
             value: speciality.title,
           }))}
