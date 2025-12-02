@@ -43,23 +43,23 @@ const DoctorFormDialog = ({
   const formRef = useRef<HTMLFormElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const isEdit = !!doctor;
-
+  // gender state
   const [gender, setGender] = useState<"MALE" | "FEMALE">(
     doctor?.gender || "MALE"
   );
-
+  //  file state for preview
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     setSelectedFile(file || null);
   };
-
+  // action state for form submission
   const [state, formAction, pending] = useActionState(
     isEdit ? updateDoctor.bind(null, doctor.id!) : createDoctor,
     null
   );
-
+  // photo preview reset on close here
   const handleClose = () => {
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
@@ -72,17 +72,17 @@ const DoctorFormDialog = ({
   };
 
   console.log({ state });
-
+  // specialty selection hook
   const specialtySelection = useSpecialtySelection({
     doctor,
     isEdit,
     open,
   });
-
+  // function to get specialty title by id
   const getSpecialtyTitle = (id: string): string => {
     return specialities?.find((s) => s.id === id)?.title || "Unknown";
   };
-
+  // handle side effects on state change
   useEffect(() => {
     if (state?.success) {
       toast.success(state.message);
